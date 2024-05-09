@@ -1,5 +1,6 @@
-import { Category } from "@/entities/category";
+import { ICategory } from "@/entities/category";
 
 export interface CategoryCardProps {
-    data: Category
+    data?: ICategory;
+    isLoading?: boolean;
 }

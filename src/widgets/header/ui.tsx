@@ -6,6 +6,7 @@ import React from 'react';
 import { Button } from '@/shared/ui/button';
 import { Card } from '@/shared/ui/card';
 import { Sheet, SheetContent, SheetTrigger } from '@/shared/ui/sheet';
+import { links } from './lib';
 
 export const Header = () => {
     return (
@@ -19,9 +20,16 @@ export const Header = () => {
                         <SheetTrigger asChild>
                             <Button size="icon" variant="outline"><MenuIcon/></Button>
                         </SheetTrigger>
-                        <SheetContent>
-                            <div className='flex flex-col gap-2'>
-
+                        <SheetContent className="h-screen">
+                            <div className='flex h-full justify-center flex-col gap-2'>
+                                {links.map(link => 
+                                <Link key={link.name} href={link.url}>
+                                    <Button variant="ghost" className="flex gap-2 w-full">
+                                        {link.icon}
+                                        {link.name}
+                                    </Button>
+                                </Link>
+                                )}
                             </div>
                         </SheetContent>
                     </Sheet>
