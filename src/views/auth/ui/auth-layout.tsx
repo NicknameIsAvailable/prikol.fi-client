@@ -1,7 +1,6 @@
-import React, { FC } from 'react';
-import { IAuthLayoutProps } from '../model';
+import React, { ReactNode } from 'react';
 
-export const AuthLayout: FC<IAuthLayoutProps> = ({ children }) => {
+export const AuthLayout = ({ children }: { children: ReactNode }) => {
     return (
         <main className='w-full h-screen flex justify-center items-center'>
             {children}

@@ -7,6 +7,8 @@ import { Button } from '@/shared/ui/button';
 import { Card } from '@/shared/ui/card';
 import { Sheet, SheetContent, SheetTrigger } from '@/shared/ui/sheet';
 import { links } from './lib';
+import { SelectCurrency } from '../currency';
+import { ChangeTheme } from '@/features/change-theme/ui';
 
 export const Header = () => {
     return (
@@ -30,6 +32,8 @@ export const Header = () => {
                                     </Button>
                                 </Link>
                                 )}
+                                <SelectCurrency />
+                                <ChangeTheme />
                             </div>
                         </SheetContent>
                     </Sheet>

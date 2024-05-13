@@ -9,6 +9,7 @@ export const useCategoryStore = create<TCategoryStore>((set) => ({
         try {
             const res = await apiWithAuth.get("/category")
             set((state: TCategoryState) => state.categories = res.data);
+            return res.data
         }
         catch (err) {
             toast("Не удалось получить категории", {
@@ -20,7 +21,9 @@ export const useCategoryStore = create<TCategoryStore>((set) => ({
     getCategory: async (id: string) => {
         try {
             const res = await apiWithAuth.get(`/category/${id}`)
-            set((state: TCategoryState) => state.currentCategory = res.data[0]);
+            console.log(34, res.data)
+            set((state: TCategoryState) => ({...state, currentCategory: res.data[0]}));
+            return res.data
         }
         catch (err) {
             toast("Не удалось получить категорию", {
@@ -28,6 +31,9 @@ export const useCategoryStore = create<TCategoryStore>((set) => ({
             })
             console.log(err)
         }
+    },
+    clearCurrentCategory: () => {
+        set((state) => ({...state, currentCategory: undefined}))
     },
     createCategory: async (data: ICategory) => {
         try {

@@ -7,12 +7,18 @@ export interface ICategory {
     iconName: keyof typeof dynamicIconImports;
     color: string;
     userId: string;
-    isExpense: boolean;
     calc: {
         incomes: number | null;
         expenses: number | null;
         difference: number | null;
     };
+}
+
+export interface ICategoryCreateData {
+    name: string;
+    description: string;
+    iconName: string;
+    color: string;
 }
 
 export type TCategoryState = {
@@ -21,10 +27,11 @@ export type TCategoryState = {
 }
 
 export type ICategoryActions = {
-    getCategories: () => void;
-    getCategory: (id: string) => void;
-    createCategory: (data: ICategory) => void;
-    updateCategory: (id: string, data: ICategory) => void;
+    getCategories: () => any;
+    getCategory: (id: string) => any;
+    clearCurrentCategory: () => any;
+    createCategory: (data: ICategory) => any;
+    updateCategory: (id: string, data: ICategory) => any;
 }
 
 export type TCategoryStore = TCategoryState & ICategoryActions;

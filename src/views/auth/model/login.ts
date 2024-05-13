@@ -1,5 +1,4 @@
 import { z, ZodType } from "zod";
-import { IFormInputData } from "@/features/form-helper";
 import { ILoginInputs } from "@/entities/auth";
 
 export const loginFormSchema: ZodType<ILoginInputs> = z.object({
@@ -21,20 +20,3 @@ export const loginFormSchema: ZodType<ILoginInputs> = z.object({
             message: "Пароль слишком длинный"
         })
 })
-
-export const loginFields: IFormInputData[] = [
-    {
-        name: "email",
-        type: "email",
-        label: "Почта",
-        placeholder: "name@domain.com",
-        rules: {}
-    },
-    {
-        name: "password",
-        type: "password",
-        label: "Пароль",
-        placeholder: "12345678",
-        rules: {}
-    },
-]

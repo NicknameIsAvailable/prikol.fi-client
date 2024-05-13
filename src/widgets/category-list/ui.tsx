@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useMemo } from 'react';
-import { CategoryCard } from '@/widgets/category-card';
+import { AddCategoryButton, CategoryCard } from '@/widgets/category-card';
 import { ICategory, useCategoryStore } from '@/entities/category';
 
 export const CategoryList = () => {
@@ -12,12 +12,16 @@ export const CategoryList = () => {
     }, [])
 
     return (
-        <div className="flex flex-wrap justify-between gap-4">
-            {
-                categories.length === 0 ? 
-                    new Array(10).map((_, index) => <CategoryCard key={index} isLoading={true} />)
-                : categories?.map((category: ICategory) => <CategoryCard data={category} key={category.id}/>)
-            }
+        <div className="flex justify-center items-center">
+            <div className="grid grid-cols-4 gap-4">
+                {
+                    categories.length === 0 ? 
+                        new Array(10).map((_, index) => <CategoryCard key={index} isLoading={true} />)
+                    : categories?.map((category: ICategory) => <CategoryCard data={category} key={category.id}/>)
+                }
+                <AddCategoryButton />
+            </div>
         </div>
+        
     );
 };

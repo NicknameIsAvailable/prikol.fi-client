@@ -1,6 +1,7 @@
-import { ECurrency, ICurrency } from "./model";
+import { create } from "zustand";
+import { ECurrency, ICurrency, ICurrencyState, TCurrencyStore } from "./model";
 
-export const currencies: ICurrency[] = [
+const currencies: ICurrency[] = [
     { ticker: ECurrency.USD, name: "Доллар США", symbol: "$" },
     { ticker: ECurrency.EUR, name: "Евро", symbol: "€" },
     { ticker: ECurrency.JPY, name: "Японская иена", symbol: "¥" },
@@ -22,3 +23,14 @@ export const currencies: ICurrency[] = [
     { ticker: ECurrency.HKD, name: "Гонконгский доллар", symbol: "HK$" },
     { ticker: ECurrency.TRY, name: "Турецкая лира", symbol: "₺" },
 ];
+
+export const useCurrencyStore = create<TCurrencyStore>((set) => ({
+    currencies,
+    currentCurrency: currencies[0],
+    selectCurrency: (value: ECurrency) => {
+        set((state) => ({
+            ...state,
+            currentCurrency: state.currencies.find((currency: ICurrency) => currency.ticker === value)
+        }));
+    }
+}));
